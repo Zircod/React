@@ -1,0 +1,19 @@
+.App {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.header {
+    color: red;
+    border: 1px solid blue;
+    background-color: cornflowerblue;
+}
+
+.header:focus,
+.header:hover {
+    cursor: pointer;
+    background-color: transparent;
+}
