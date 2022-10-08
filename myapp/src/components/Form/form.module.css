@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 300px;
+  background: linear-gradient(165deg, #FFFFFF 6.15%, #e844db 202.69%);
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.input {
+  width: 100%;
+  height: 30px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.button {
+  width: 100%;
+  box-shadow: 0 0 3px rgb(13 96 111 / 8%), 0 2px 3px rgb(13 96 111 / 16%);
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  padding: 10px 5px;
+  box-sizing: border-box;
+  background: #a063bf;
+  color: #FFFFFF;
+}
