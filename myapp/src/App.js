@@ -4,16 +4,8 @@ import {useEffect, useState} from "react";
 import MessageList from "./components/MessageList/MessageList";
 import {AUTHORS} from "./utils/constans";
 
-const msgs = [
-  {
-    author: 'Jon',
-    text: 'Hi'
-  }
-];
-
 const App = () => {
-
-  const [messages, setMessages] = useState(msgs);
+  const [messages, setMessages] = useState([]);
 
   const addMessage = (newMsg) => {
     setMessages([...messages, newMsg]);
@@ -23,6 +15,7 @@ const App = () => {
     addMessage({
       author: AUTHORS.human,
       text,
+      id: `msg-${Date.now()}`
     });
   };
 
@@ -30,7 +23,11 @@ const App = () => {
     let timeout;
     if (messages[messages.length - 1]?.author === AUTHORS.human) {
       setTimeout(() => {
-        addMessage( { text: "Hello friend", author: AUTHORS.robot})
+        addMessage( {
+          text: "Hello friend",
+          author: AUTHORS.robot,
+          id: `msg-${Date.now()}`
+        })
       }, 1000);
     }
 
