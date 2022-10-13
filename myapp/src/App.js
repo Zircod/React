@@ -1,11 +1,13 @@
 import './App.css';
 import Form from "./components/Form/form";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import MessageList from "./components/MessageList/MessageList";
 import {AUTHORS} from "./utils/constans";
+import ChatList from "./components/ChatList/chatList";
 
 const App = () => {
   const [messages, setMessages] = useState([]);
+  const timeout =useRef();
 
   const addMessage = (newMsg) => {
     setMessages([...messages, newMsg]);
@@ -15,31 +17,34 @@ const App = () => {
     addMessage({
       author: AUTHORS.human,
       text,
-      id: `msg-${Date.now()}`
+      id: `msg-${Date.now()}`,
     });
   };
 
   useEffect(() => {
-    let timeout;
+    // let timeout;
     if (messages[messages.length - 1]?.author === AUTHORS.human) {
-      setTimeout(() => {
+      timeout.current = setTimeout(() => {
         addMessage( {
           text: "Hello friend",
           author: AUTHORS.robot,
-          id: `msg-${Date.now()}`
+          id: `msg-${Date.now()}` //for key
         })
       }, 1000);
     }
 
     return () => {
-      clearTimeout(timeout);
+      clearTimeout(timeout.current);
     }
   }, [messages]);
 
   return (
     <div className="App">
-      <MessageList messages={messages} />
-      <Form onSubmit={sendMessage}/>
+      <ChatList />
+      <div className="appWrapper">
+        <MessageList messages={messages} />
+        <Form onSubmit={sendMessage}/>
+      </div>
     </div>
   );
 };
